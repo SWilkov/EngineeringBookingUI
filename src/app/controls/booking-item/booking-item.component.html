@@ -1,0 +1,28 @@
+<section class="bookeditem">
+  <div class="bookingitem__container">
+    <div class="bookingitem__content">
+      <div class="bookingitem__content-item">
+        <h3>First Name</h3>
+        <p>{{ booking?.customer?.firstName }}</p>
+      </div>
+      <div class="bookingitem__content-item">
+        <h3>Last Name</h3>
+        <p>{{ booking?.customer?.lastName }}</p>
+      </div>
+    
+    
+      <div class="bookingitem__content-item">
+        <h3>Start Time</h3>
+        <p>{{ booking?.startDate | date: 'short' }}</p>
+      </div>
+      <div class="bookingitem__content-item">
+        <h3>End Time</h3>
+        <p>{{ booking?.endDate | date: 'short' }}</p>
+      </div>
+      <div class="bookingitem__content-item">
+        <h3>Customer Email</h3>
+        <p>{{ booking?.customer?.email }}</p>
+      </div>
+    </div>
+  </div>
+</section>

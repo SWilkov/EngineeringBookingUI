@@ -1,0 +1,11 @@
+
+<div class="ts-item" [ngClass]="{ 'ts-item--booked': (booked$ | async) }">  
+
+  <div class="ts-item__time">
+    {{ timeSlot.startTime }}
+  </div>
+
+  <div class="ts-item__time">
+    {{ timeSlot.endTime }}
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+.bookings {
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+

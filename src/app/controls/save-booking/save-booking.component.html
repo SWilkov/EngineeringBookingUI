@@ -1,0 +1,179 @@
+<div class="savebooking">
+  <div class="savebooking__container">
+    <div class="savebooking__header">
+      <h2>Save a new <strong>Booking</strong></h2>
+      <p>Book a qualified engineer to visit your home or business.</p>
+    </div>
+    <form [formGroup]="bookingForm" (submit)="save()" class="savebooking__form">
+      <div class="savebooking__form__container">
+
+        <section class="savebooking__section savebooking__customer">
+          <h4 class="savebooking__heading">Customer Details</h4>
+          <mat-form-field class="savebooking__field" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Ex. John" formControlName="firstName">
+            <div *ngIf="bookingForm.controls.firstName.invalid && (bookingForm.controls.firstName.dirty || bookingForm.controls.firstName.touched)"
+              class="alert alert-danger">
+
+              <div *ngIf="bookingForm.controls.firstName.errors?.['required']">
+                First Name is required..
+              </div> 
+            </div>
+          </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Ex. Gervais" formControlName="lastName">
+          <div *ngIf="bookingForm.controls.lastName.invalid && (bookingForm.controls.lastName.dirty || bookingForm.controls.lastName.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.lastName.errors?.['required']">
+              Last Name is required..
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex. jsmith@aol.com" formControlName="email">
+          <div *ngIf="bookingForm.controls.email.invalid && (bookingForm.controls.email.dirty || bookingForm.controls.email.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.email.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="bookingForm.controls.email.errors?.['email']">
+              Email is invalid.
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Contact Number</mat-label>
+          <input matInput placeholder="Ex. 01222 123456" formControlName="contactNumber">
+          <div *ngIf="bookingForm.controls.contactNumber.invalid && (bookingForm.controls.contactNumber.dirty || bookingForm.controls.contactNumber.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.contactNumber.errors?.['required']">
+              Contact Number is required..
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Street</mat-label>
+          <input matInput placeholder="Ex. 123 Fake Street" formControlName="street">
+          <div *ngIf="bookingForm.controls.street.invalid && (bookingForm.controls.street.dirty || bookingForm.controls.street.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.street.errors?.['required']">
+              Street is required..
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Ex. London" formControlName="city">
+          <div *ngIf="bookingForm.controls.city.invalid && (bookingForm.controls.city.dirty || bookingForm.controls.city.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.city.errors?.['required']">
+              City is required..
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Postcode</mat-label>
+          <input matInput placeholder="Ex. SW1A 1AA" formControlName="postcode">
+          <div *ngIf="bookingForm.controls.postcode.invalid && (bookingForm.controls.postcode.dirty || bookingForm.controls.postcode.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.postcode.errors?.['required']">
+              Postcode is required..
+            </div>
+            <div *ngIf="bookingForm.controls.postcode.errors?.['maxLength']">
+              Postcode exceeded max length.
+            </div>
+          </div>
+        </mat-form-field>
+      </section>
+
+      <section class="savebooking__section savebooking__job">
+        <h4 class="savebooking__heading">Job Details</h4>
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Job Category</mat-label>
+          <mat-select formControlName="jobCategory">
+            <mat-option *ngFor="let category of jobCategories" [value]="category">
+              {{ category }} 
+            </mat-option>
+          </mat-select>
+          <div *ngIf="bookingForm.controls.jobCategory.invalid && (bookingForm.controls.jobCategory.dirty || bookingForm.controls.jobCategory.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.jobCategory.errors?.['required']">
+              Job Category is required..
+            </div> 
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Vehicle Registration</mat-label>
+          <input matInput placeholder="Ex. AB18 ABV" formControlName="vehicleRegistration">
+          <div *ngIf="bookingForm.controls.vehicleRegistration.invalid && (bookingForm.controls.vehicleRegistration.dirty || bookingForm.controls.vehicleRegistration.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.vehicleRegistration.errors?.['required']">
+              Registration is required..
+            </div>
+            <div *ngIf="bookingForm.controls.vehicleRegistration.errors?.['maxLength']">
+              Registration exceeded max length.
+            </div>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field" appearance="outline">
+          <mat-label>Select Date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Ex. 25/12/2020" (dateChange)="dateChanged($event)"
+          formControlName="date" [min]="minDate">
+          
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="savebooking__field savebooking__field--full" appearance="outline">
+          <mat-label>Comments (max 500)</mat-label>
+          <textarea matInput class="savebooking__text" placeholder="Ex. something to add :)" formControlName="comments"></textarea>
+          <div *ngIf="bookingForm.controls.comments.invalid && (bookingForm.controls.comments.dirty || bookingForm.controls.comments.touched)"
+            class="alert alert-danger">
+
+            <div *ngIf="bookingForm.controls.comments.errors?.['maxLength']">
+              Comments exceeded max length
+            </div> 
+          </div>
+          <div class="savebooking__count">{{bookingForm.controls.comments.value?.length}}</div>
+        </mat-form-field>
+        </section>
+
+        <section class="savebooking__slots">
+          <h4 class="savebooking__heading">Time Slots</h4>
+          <div class="savebooking__slots__desc">
+            <p>Already booked </p><div class="savebooking__slots--line"></div>
+          </div>
+          <app-time-slots></app-time-slots>
+        </section>
+
+      <section class="savebooking__btns">
+        <button mat-stroked-button color="primary" type="submit" class="savebooking__btn"
+          >Save</button> 
+        <button mat-stroked-button color="primary" type="button" class="savebooking__btn"
+          (click)="reset()">Clear</button>       
+      </section>
+      </div>
+    </form>
+
+    
+
+  </div>
+</div>

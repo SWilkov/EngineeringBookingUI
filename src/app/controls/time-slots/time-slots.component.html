@@ -1,0 +1,17 @@
+
+<div class="timeslots">
+  <div class="timeslots__container" *ngIf="timeSlots$ | async as ts">
+    <mat-selection-list #slots [multiple]="false" (selectionChange)="slotSelectionChanged($event)"
+      class="timeslots__list" *ngIf="ts && ts.length > 0; else none">
+      <mat-list-option *ngFor="let timeSlot of ts" [value]="timeSlot" disabled="false">
+        <app-time-slot-item [timeSlot]="timeSlot"></app-time-slot-item>
+      </mat-list-option>
+    </mat-selection-list>    
+  </div>
+
+  <ng-template #none>
+    <div class="timeslots__none">
+      <h3>No timeslots found. Please try a different date!</h3>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,122 @@
+@import '../../mixins';
+
+.savebooking {
+  &__container {
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__form {
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      
+      column-gap: 1em;
+    }
+  }
+
+  &__btns {
+    margin-top: 2em;
+    width: 100%;
+    display: flex;
+    grid-column: 1/3;
+    justify-content: center;    
+  }
+
+  &__btn {
+    padding: 5px 1em;
+    min-width: 100px;
+    margin-right: 10px;
+  }
+
+  &__field {
+    &--full {
+      grid-column: 1 / 3;
+    }
+  }
+
+  &__text {
+    min-height: 100px;
+  }
+
+  &__count {
+    width: 100%;
+    font-size: 12px;
+    color: rgba(0,0,0,0.6);
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__section {
+    border: 5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 1em;
+  }
+
+  &__slots {
+    font-size: 12px;
+
+    &__desc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 200px;
+      align-items: baseline;
+    }
+    &--line {
+      height: 15px;
+      border-radius: 5px;
+      width: 50px;
+      background: red;
+    }
+  }
+
+  &__customer, &__job {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+    justify-content: space-evenly;
+  }
+
+  &__heading {
+    font-weight: 500;
+  }
+}
+
+@include respond-below(desktop) {
+  .savebooking {
+
+    &__form {
+      &__container {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@include respond-below(mobile) {
+  .savebooking {
+    &__container {
+      padding: 5px;
+    }
+
+    &__customer, &__job {
+      display: flex;
+      flex-direction: column; 
+    }
+
+    &__form {
+      width: 100%;
+      &__container {
+        width: 100%;
+      }
+    }
+
+    &__section {
+      margin: 1em 0;
+    }
+  }
+}

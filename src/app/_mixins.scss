@@ -1,0 +1,51 @@
+$breakpoints: (
+  tiny: 460px,
+  mobile: 576px,
+  tablet: 768px,
+  desktop: 1000px,
+  large: 1200px
+);  
+
+@mixin respond-above($breakpoint) {
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    $breakpoint-value: map-get($map: $breakpoints, $key: $breakpoint);
+
+    //write the media query
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin respond-below($bp) {
+  @if map-has-key($map: $breakpoints, $key: $bp) {
+    $breakpoint-value: map-get($map: $breakpoints, $key: $bp);
+
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$bp}.';
+  }
+}
+
+@mixin respond-between($firstbp, $secondbp) {
+  @if map-has-key($map: $breakpoints, $key: $firstbp) {
+    @if map-has-key($map: $breakpoints, $key: $secondbp) {
+
+      $firstbp-value: map-get($map: $breakpoints, $key: $firstbp);
+      $secondbp-value: map-get($map: $breakpoints, $key: $secondbp);
+
+      @media (min-width: $firstbp-value) and (max-width: ($secondbp-value - 1)) {
+        @content;
+      }
+    } @else {
+      @warn 'Invalid breakpoint: #{$secondbp}.';
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$firstbp}.';
+  }
+}

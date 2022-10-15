@@ -1,0 +1,15 @@
+.ts-item {
+  //border: 5px solid rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+  margin-bottom: 10px;
+  font-weight: 500;
+
+  &--booked {
+    background-color: red;
+    color: #fff;
+  }
+}

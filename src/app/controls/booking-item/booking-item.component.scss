@@ -1,0 +1,12 @@
+.bookingitem {
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 10px;
+    padding: 1em;
+    margin-bottom: 10px;
+  }
+}

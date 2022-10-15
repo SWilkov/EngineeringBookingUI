@@ -1,0 +1,22 @@
+
+.header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  color: #fff;
+  &__container {
+    padding: 1em;
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    margin-right: 1em;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
