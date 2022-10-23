@@ -19,6 +19,7 @@ export class TimeSlotItemComponent implements OnInit, OnDestroy {
   day: DayOfWeek = DayOfWeek.Monday;
 
   booked$: Observable<boolean>;
+  bookedSubscription: Subscription;
   selectedDate$: Observable<Date>;
   selectedDateSubscription: Subscription;
 
@@ -30,10 +31,16 @@ export class TimeSlotItemComponent implements OnInit, OnDestroy {
     this.selectedDateSubscription = this.selectedDate$.subscribe(date => {
       if (date) {
         this.booked$ = this.store.select(timeSlotSelectors.timeSlotBooked({current: this.timeSlot }));
-      }});    
+      }}); 
+      
+    this.booked$ = this.store.select(timeSlotSelectors.timeSlotBooked({current: this.timeSlot }));
+    this.bookedSubscription = this.booked$.subscribe(booked => {
+      this.booked = booked;
+    });
   }
 
   ngOnDestroy(): void {
     this.selectedDateSubscription?.unsubscribe();
+    this.bookedSubscription?.unsubscribe();
   }
 }

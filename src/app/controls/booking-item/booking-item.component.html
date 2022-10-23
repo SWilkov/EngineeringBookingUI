@@ -1,27 +1,27 @@
-<section class="bookeditem">
-  <div class="bookingitem__container">
-    <div class="bookingitem__content">
-      <div class="bookingitem__content-item">
-        <h3>First Name</h3>
-        <p>{{ booking?.customer?.firstName }}</p>
+<section class="item">
+  <div class="item__container">
+    <div class="item__content">
+      <div class="item__content-item">
+        <label class="item__label">First Name</label>
+        <div>{{ booking?.customer?.firstName }}</div>
       </div>
-      <div class="bookingitem__content-item">
-        <h3>Last Name</h3>
-        <p>{{ booking?.customer?.lastName }}</p>
+      <div class="item__content-item">
+        <label class="item__label">Last Name</label>
+        <div>{{ booking?.customer?.lastName }}</div>
       </div>
     
     
-      <div class="bookingitem__content-item">
-        <h3>Start Time</h3>
-        <p>{{ booking?.startDate | date: 'short' }}</p>
+      <div class="item__content-item">
+        <label class="item__label">Start Time</label>
+        <div>{{ booking?.startDate | date: 'short' }}</div>
       </div>
-      <div class="bookingitem__content-item">
-        <h3>End Time</h3>
-        <p>{{ booking?.endDate | date: 'short' }}</p>
+      <div class="item__content-item">
+        <label class="item__label">End Time</label>
+        <div>{{ booking?.endDate | date: 'short' }}</div>
       </div>
-      <div class="bookingitem__content-item">
-        <h3>Customer Email</h3>
-        <p>{{ booking?.customer?.email }}</p>
+      <div class="item__content-item">
+        <label class="item__label">Customer Email</label>
+        <div>{{ booking?.customer?.email }}</div>
       </div>
     </div>
   </div>

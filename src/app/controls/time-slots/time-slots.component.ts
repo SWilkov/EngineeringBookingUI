@@ -30,9 +30,7 @@ export class TimeSlotsComponent implements OnInit, OnDestroy {
     });
   }
 
-  slotSelectionChanged = (event: MatSelectionListChange) => {
-    console.log(event);
-
+  slotSelectionChanged = (event: MatSelectionListChange) => {    
     if (event.options && event.options.length > 0) {
       this.store.dispatch(timeSlotActions.timeSlotSelected({ payload: event.options[0].value }));
     }

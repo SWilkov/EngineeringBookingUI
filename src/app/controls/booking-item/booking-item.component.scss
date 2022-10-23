@@ -1,5 +1,6 @@
-.bookingitem {
+@import '../../mixins';
 
+.item {
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -8,5 +9,20 @@
     border-radius: 10px;
     padding: 1em;
     margin-bottom: 10px;
+  }
+
+  &__label {
+    color: rgba(0,0,0,0.25);
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+@include respond-below(mobile) {
+  .item {
+    &__content {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }
