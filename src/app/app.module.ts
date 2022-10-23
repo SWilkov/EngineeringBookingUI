@@ -20,6 +20,7 @@ import { TimeSlotService } from './services/time-slot.service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { DateHelperService } from './services/date-helper.service';
+import { SnackBarService } from './services/snack-bar.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DateHelperService } from './services/date-helper.service';
   providers: [
     BookingService,
     TimeSlotService,
-    DateHelperService
+    DateHelperService,
+    SnackBarService
   ],
   bootstrap: [AppComponent]
 })

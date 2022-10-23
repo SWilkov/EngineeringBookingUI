@@ -4,7 +4,7 @@
   <div class="bookings__container">
     <h3 class="bookings__headline">Existing Bookings.</h3>
     <div class="bookings__list" *ngIf="bookings && bookings.length > 0; else nobookings">      
-      <app-booking-item [booking]="booking" *ngFor="let booking of bookings"></app-booking-item>
+      <app-booking-item style="width: 100%;" [booking]="booking" *ngFor="let booking of bookings"></app-booking-item>
     </div>
   </div>
 
