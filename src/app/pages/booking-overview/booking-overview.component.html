@@ -1,7 +1,14 @@
 <div class="overview">
-  <div class="overview__container">
+  <!-- <mat-spinner diameter="100" [mode]="mode" color="primary"></mat-spinner> -->
+  <div class="overview__container" *ngIf="!(loading$ | async); else loading">
+    
     <app-booking-list [bookings]="bookings$ | async"></app-booking-list>
 
     <!-- <app-time-slots></app-time-slots> -->
   </div>
+  <ng-template #loading>
+    <div class="overview__loading">
+      <mat-spinner diameter="100" [mode]="mode"></mat-spinner>
+    </div>
+  </ng-template>
 </div>
