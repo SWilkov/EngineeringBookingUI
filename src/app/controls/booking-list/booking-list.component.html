@@ -1,7 +1,11 @@
 
 <div class="bookings">
+  
   <div class="bookings__container" *ngIf="bookings; else nobookings">
-    <app-booking-item [booking]="booking" *ngFor="let booking of bookings"></app-booking-item>
+    <h3 class="bookings__headline">Existing Bookings.</h3>
+    <div class="bookings__list">      
+      <app-booking-item [booking]="booking" *ngFor="let booking of bookings"></app-booking-item>
+    </div>
   </div>
 
   <ng-template #nobookings>

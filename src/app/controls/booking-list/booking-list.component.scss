@@ -1,13 +1,44 @@
+@import '../../mixins';
 
 .bookings {
   display: flex;
   justify-content: center;
 
   &__container {
+    width: 100%;    
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__list {    
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  &__headline {
+    font-size: var(--headline-font-size);
+    font-weight: var(--headline-font-weight);
+  }
 }
 
+@include respond-above(desktop) {
+  .bookings {
+    &__container {
+      max-width: 1200px;
+    }
+  }
+}
+
+@include respond-below(mobile) {
+  .bookings {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      column-gap: 1em;
+    }
+  }
+}
