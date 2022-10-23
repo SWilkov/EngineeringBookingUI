@@ -5,6 +5,7 @@ import { Booking } from 'src/app/models/booking.model';
 import { AppState } from 'src/app/reducers';
 import * as bookingSelectors from '../../selectors/booking.selectors';
 import * as bookingActions from '../../actions/booking.actions';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-booking-overview',
@@ -16,6 +17,9 @@ export class BookingOverviewComponent implements OnInit, OnDestroy {
   loaded$: Observable<boolean>;
   loadedSubscription: Subscription;
 
+  loading$: Observable<boolean>;
+  mode: ProgressSpinnerMode = "indeterminate";
+
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
@@ -26,6 +30,7 @@ export class BookingOverviewComponent implements OnInit, OnDestroy {
         this.store.dispatch(bookingActions.loadBookings());
       }
     });
+    this.loading$ = this.store.select(bookingSelectors.selectLoading);
   }
 
   ngOnDestroy(): void {
