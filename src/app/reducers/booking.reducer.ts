@@ -42,11 +42,19 @@ const _bookingreducer = createReducer(
   ),
   on(bookingActions.loadBookingsSuccess,
     (state, { payload }) => {
+      if (payload) {
       return adaptor.setAll(payload, {
         ...state,
         loading: false,
         loaded: true
       })
+    } else {
+      return {
+        ...state,
+        loading: false,
+        loaded: true
+      }
+    }
     }),
   on(bookingActions.loadBookingsFailure,
     (state, { payload }) => ({
@@ -120,8 +128,9 @@ export const getBookingsBySelectedDate = (state: BookingState) => {
   if (state && state.entities) {
     let bookings = selectAll(state)
       .filter(booking => new Date(booking.startDate).getFullYear() === state.selectedDate.getFullYear() &&
-       new Date(booking.startDate).getMonth() === state.selectedDate.getMonth() );
-
+       new Date(booking.startDate).getMonth() === state.selectedDate.getMonth() &&
+       new Date(booking.startDate).getDate() === state.selectedDate.getDate());
+    //console.log(`heres the bookings: ${bookings.map(x => x.startDate)}`);
     return bookings;
     } 
   return [];

@@ -20,7 +20,7 @@ export class SaveBookingComponent implements OnInit, OnDestroy {
   jobCategories: string[] = [
     'Warranty',
     'Breakdown',
-    'Vehicle of Road'
+    'Vehicle off Road'
   ];
   
   minDate: Date = new Date();
@@ -57,11 +57,7 @@ export class SaveBookingComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private dateHelperService: DateHelperService) { }
 
-  ngOnInit(): void {
-    this.bookingForm.valueChanges.subscribe(value => {
-      console.log(value);
-    });
-
+  ngOnInit(): void {    
     this.bookings$ = this.store.select(bookingSelectors.selectBookings);
     this.loaded$ = this.store.select(bookingSelectors.selectLoaded);
     this.loadedSubscription = this.loaded$.subscribe(loaded => {
@@ -114,15 +110,13 @@ export class SaveBookingComponent implements OnInit, OnDestroy {
   }
 
   /// Date has changed from the form let the store know
-  dateChanged = (event: MatDatepickerInputEvent<Date>) => {
-    console.log(event);
+  dateChanged = (event: MatDatepickerInputEvent<Date>) => {    
     if (event.value) {
       this.store.dispatch(bookingActions.updateSelectedDate({ payload: event.value }));
     }
   }
 
-  save = () => {
-    console.log(this.bookingForm.value);
+  save = () => {   
 
     //Check form is valid and save to Api
     if (this.bookingForm.valid) {
